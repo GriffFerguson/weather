@@ -106,20 +106,27 @@ function createCard(forecast) {
         temp.classList.add('freezing-temp')
     }
 
-    temp.innerText = `${forecast.temperature}\u00B0${forecast.temperatureUnit}`
+    temp.innerText = `${forecast.temperature}\u00B0${forecast.temperatureUnit}`;
     
     // Wind
-    var windCont = document.createElement('div')
-    windCont.classList.add('wind-container')
-    var windSpeed = document.createElement('span')
-    windSpeed.classList.add('windSpeed')
-    windSpeed.innerText = forecast.windSpeed
-    var windDir = document.createElement('span')
-    windDir.classList.add('windDir')
-    windDir.innerText = forecast.windDirection
-    windCont.appendChild(windSpeed)
-    windCont.appendChild(windDir)
+    var windCont = document.createElement('div');
+    windCont.classList.add('wind-container');
+    var windSpeed = document.createElement('p');
+    windSpeed.classList.add('windSpeed');
+    windSpeed.innerText = forecast.windSpeed;
+    var windDir = document.createElement('p');
+    windDir.classList.add('windDir');
+    windDir.innerText = forecast.windDirection;
 
+    var imgWindSpeed = document.createElement('img');
+    imgWindSpeed.src = '/images/windSpeed.png';
+    windCont.appendChild(imgWindSpeed);
+    windCont.appendChild(windSpeed);
+    var imgWindDir = document.createElement('img');
+    imgWindDir.classList.add(`windDir-${forecast.windDirection}`)
+    imgWindDir.src = '/images/windDir.png';
+    windCont.appendChild(imgWindDir);
+    windCont.appendChild(windDir);
 
     document.getElementById(cardID).appendChild(name);
     document.getElementById(cardID).appendChild(temp);

@@ -25,7 +25,7 @@ h1 {
 
 p {
     font-family:'Montserrat';
-    margin:5px;;
+    margin:5px;
 }
 
 
@@ -111,11 +111,10 @@ main {
     margin:0;
     font-size:1.75rem;
 }
-.forecast-card p, .forecast-card span {
+.forecast-card p {
     text-align:center;
     margin:0;
-    font-size:1.3rem;
-    font-family:'Montserrat';
+    font-size:1.2rem;
 }
 
 .temperature {
@@ -125,6 +124,27 @@ main {
 .hot-temp {color:rgb(161, 0, 0);}
 .cold-temp {color:rgb(100, 100, 245);}
 .freezing-temp {color:rgb(197, 197, 197);}
+
+.wind-container {
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+}
+.wind-container img {
+    width: 2rem;
+    height: 2rem;
+    margin-right:0.3rem;
+    margin-left:0.7rem;
+}
+
+.windDir-N {transform: rotate(0deg);}
+.windDir-NE {transform: rotate(45deg);}
+.windDir-E {transform: rotate(90deg);}
+.windDir-SE {transform: rotate(135deg);}
+.windDir-S {transform: rotate(180deg);}
+.windDir-SW {transform: rotate(-135deg);}
+.windDir-W {transform: rotate(-90deg);}
+.windDir-NW {transform: rotate(-45deg);}
 
 /* Navigation buttons */
 .navigator {
