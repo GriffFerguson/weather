@@ -104,6 +104,29 @@ main {
     z-index:89
 }
 
+/* Forecast card elements */
+.forecast-card h2 {
+    font-family: 'LatoBlack';
+    text-align:center;
+    margin:0;
+    font-size:1.75rem;
+}
+.forecast-card p, .forecast-card span {
+    text-align:center;
+    margin:0;
+    font-size:1.3rem;
+    font-family:'Montserrat';
+}
+
+.temperature {
+    font-weight:1000;
+    font-size:1.45rem;
+}
+.hot-temp {color:rgb(161, 0, 0);}
+.cold-temp {color:rgb(100, 100, 245);}
+.freezing-temp {color:rgb(197, 197, 197);}
+
+/* Navigation buttons */
 .navigator {
     position:absolute;
     width:45px;

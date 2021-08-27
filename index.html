@@ -32,13 +32,16 @@
         <div id="right" class="navigator">&#707;</div>
     </main>
     <script>
+        console.log("1")
         setTimeout(() => {
+            console.log("2")
             if(document.getElementById('loading').style.opacity == '1') {
                 document.getElementById('loading_text-wrapper').innerHTML +=
                 '<p>Experiencing delays? Wait a few more seconds then reload the page!' +
                 '<br>Make sure to click "Allow" when prompted for your location as well!</p>'
             }
-        }, 5000)
+            console.log("3")
+        }, 4000)
     </script>
     <script src="/scripts/weather.js"></script>
     <script>
@@ -49,7 +52,6 @@
         var translation = 0;
 
         navKeys.left.addEventListener('click', e => {
-            console.log('Left clicked');
             if (translation != 0) {
                 translation = translation + 263;
                 for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {

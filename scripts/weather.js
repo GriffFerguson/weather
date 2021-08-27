@@ -88,11 +88,42 @@ async function forecast(forecastJSON) {
 }
 
 function createCard(forecast) {
-    var order = forecast.number;
-    // console.log(`card${order}` + '\r\n' + document.getElementById(`card${order}`).innerHTML)
-    document.getElementById(`card${order}`).innerText = order
-    console.log(forecast)
-    var time = forecast.name;
+    var cardID = 'card' + forecast.number;
+
+    // Forecast time
+    var name = document.createElement('h2')
+    name.innerText = forecast.name;
+
+    // Temperature
+    var temp = document.createElement('p')
+    temp.classList.add('temperature')
+
+    if (forecast.temperature >= '70') {
+        temp.classList.add('hot-temp')
+    } else if (forecast.temperature < 70) {
+        temp.classList.add('cold-temp')
+    } else if (forecast.temperature < 32) {
+        temp.classList.add('freezing-temp')
+    }
+
+    temp.innerText = `${forecast.temperature}\u00B0${forecast.temperatureUnit}`
+    
+    // Wind
+    var windCont = document.createElement('div')
+    windCont.classList.add('wind-container')
+    var windSpeed = document.createElement('span')
+    windSpeed.classList.add('windSpeed')
+    windSpeed.innerText = forecast.windSpeed
+    var windDir = document.createElement('span')
+    windDir.classList.add('windDir')
+    windDir.innerText = forecast.windDirection
+    windCont.appendChild(windSpeed)
+    windCont.appendChild(windDir)
+
+
+    document.getElementById(cardID).appendChild(name);
+    document.getElementById(cardID).appendChild(temp);
+    document.getElementById(cardID).appendChild(windCont);
 }
 
 function loadPage() {
