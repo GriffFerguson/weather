@@ -14,14 +14,19 @@
     </div>
     <h1 id="title">Weather for <span id="location"></span></h1>
     <main>
-        <div id="current">
+        <div id="current" class="forecast-card">
             <p class=""></p>
         </div>
+        <div id="" class="forecast-card"></div>
+        <div id="" class="forecast-card"></div>
+        <div id="" class="forecast-card"></div>
+        <div id="" class="forecast-card"></div>
+        <div id="" class="forecast-card"></div>
     </main>
     <script src="/scripts/weather.js"></script>
     <script>
         setTimeout(() => {
-            if(document.getElementById('loading').style.display != 'none') {
+            if(document.getElementById('loading').style.opacity == '1') {
                 document.getElementById('loading_text-wrapper').innerHTML +=
                 '<p>Experiencing delays? Wait a few more seconds then reload the page!' +
                 '<br>Make sure to click "Allow" when prompted for your location as well!</p>'
