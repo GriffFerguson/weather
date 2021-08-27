@@ -68,7 +68,7 @@ p {
 /* Weather section */
 main {
     width:auto;
-    max-width:1578px;
+    max-width:1312px; /* Due to padding, max width is closer to 1578px */
     margin-top:30px;
     margin-bottom:30px;
     /* margin-left:10.5%;
@@ -80,6 +80,8 @@ main {
     justify-content: flex-start;
     position:relative;
     padding:0;
+    overflow-x:hidden;
+    padding-left:266px;
 }
 
 .forecast-card {
@@ -88,12 +90,49 @@ main {
     min-height:200px;
     margin:0;
     min-width:240px;
+    transition:transform 500ms;
 }
 
 .forecast-card:nth-child(odd) {background-color:rgb(69, 85, 233)}
 .forecast-card:nth-child(even) {background-color:rgb(32, 42, 133)}
 .forecast-card:not(:last-of-type) {border-right:3px rgb(160, 160, 160) solid;}
-#current {
+#card1 {
     border-right:5px rgb(190, 190, 190) solid;
     background-color:rgb(34, 34, 107);
+    position:fixed;
+    margin-left:-266px;
+    z-index:89
+}
+
+.navigator {
+    position:absolute;
+    width:45px;
+    text-align: center;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:black;
+    font-family:'Montserrat';
+    font-size:2rem;
+    font-weight:bold;
+    cursor:default;
+    opacity:0;
+    transition:opacity 800ms, background 200ms;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index:89
+    
+}
+.navigator:hover {opacity:1}
+.navigator:active {background-color:rgba(200, 200, 200, 0.4)}
+#left {
+    left:265px;
+    background-image: linear-gradient(to right, rgba(200,200,200,1),rgba(200,200,200,0));
+}
+#right {
+    right:0;
+    background-image: linear-gradient(to left, rgba(200,200,200,1),rgba(200,200,200,0));
 }

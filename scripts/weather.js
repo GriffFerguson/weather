@@ -88,6 +88,9 @@ async function forecast(forecastJSON) {
 }
 
 function createCard(forecast) {
+    var order = forecast.number;
+    // console.log(`card${order}` + '\r\n' + document.getElementById(`card${order}`).innerHTML)
+    document.getElementById(`card${order}`).innerText = order
     console.log(forecast)
     var time = forecast.name;
 }

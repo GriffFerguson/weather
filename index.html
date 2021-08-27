@@ -14,16 +14,23 @@
     </div>
     <h1 id="title">Weather for <span id="location"></span></h1>
     <main>
-        <div id="current" class="forecast-card">
-            <p class=""></p>
-        </div>
-        <div id="" class="forecast-card"></div>
-        <div id="" class="forecast-card"></div>
-        <div id="" class="forecast-card"></div>
-        <div id="" class="forecast-card"></div>
-        <div id="" class="forecast-card"></div>
+        <div id="left" class="navigator">&#706;</div>
+        <div id="card1" class="forecast-card"></div>
+        <div id="card2" class="forecast-card"></div>
+        <div id="card3" class="forecast-card"></div>
+        <div id="card4" class="forecast-card"></div>
+        <div id="card5" class="forecast-card"></div>
+        <div id="card6" class="forecast-card"></div>
+        <div id="card7" class="forecast-card"></div>
+        <div id="card8" class="forecast-card"></div>
+        <div id="card9" class="forecast-card"></div>
+        <div id="card10" class="forecast-card"></div>
+        <div id="card11" class="forecast-card"></div>
+        <div id="card12" class="forecast-card"></div>
+        <div id="card13" class="forecast-card"></div>
+        <div id="card14" class="forecast-card"></div>
+        <div id="right" class="navigator">&#707;</div>
     </main>
-    <script src="/scripts/weather.js"></script>
     <script>
         setTimeout(() => {
             if(document.getElementById('loading').style.opacity == '1') {
@@ -32,6 +39,33 @@
                 '<br>Make sure to click "Allow" when prompted for your location as well!</p>'
             }
         }, 5000)
+    </script>
+    <script src="/scripts/weather.js"></script>
+    <script>
+        var navKeys = {
+            left: document.getElementById('left'),
+            right: document.getElementById('right')
+        }
+        var translation = 0;
+
+        navKeys.left.addEventListener('click', e => {
+            console.log('Left clicked');
+            if (translation != 0) {
+                translation = translation + 263;
+                for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}px)`
+                }
+            }
+        })
+        navKeys.right.addEventListener('click', e => {
+            console.log('Right clicked');
+            if (translation != -2104) {
+                translation = translation - 263;
+                for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}px)`
+                }
+            }
+        })
     </script>
 </body>
 </html>
