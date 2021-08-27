@@ -7,7 +7,26 @@
     <link href="/styles/main.css" rel="stylesheet">
 </head>
 <body>
-    <main></main>
+    <div id="loading">
+        <div id="loading_text-wrapper">
+            <h1>Loading...</h1>
+        </div>
+    </div>
+    <h1 id="title">Weather for <span id="location"></span></h1>
+    <main>
+        <div id="current">
+            <p class=""></p>
+        </div>
+    </main>
     <script src="/scripts/weather.js"></script>
+    <script>
+        setTimeout(() => {
+            if(document.getElementById('loading').style.display != 'none') {
+                document.getElementById('loading_text-wrapper').innerHTML +=
+                '<p>Experiencing delays? Wait a few more seconds then reload the page!' +
+                '<br>Make sure to click "Allow" when prompted for your location as well!</p>'
+            }
+        }, 5000)
+    </script>
 </body>
 </html>
