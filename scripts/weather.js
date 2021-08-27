@@ -6,6 +6,21 @@ navigator.geolocation.getCurrentPosition(
         maximumAge: 0
 })
 
+var data = {
+    meta: null,
+    time: null,
+    city: null,
+    forecast: [],
+    time: null,
+    time: null,
+    time: null,
+    time: null,
+    time: null,
+    time: null,
+    time: null,
+    time: null
+}
+
 function getWeather(loc) {
     const pos = {
         lat: loc.coords.latitude,
@@ -18,6 +33,7 @@ function getWeather(loc) {
         return response.json()
     })
     .then(function(json) {
+        data.meta = json.properties
         fetch(json.properties.forecast)
         .then(function(response) {
             return response.json()
@@ -29,7 +45,7 @@ function getWeather(loc) {
 }
 
 function error() {
-    console.log('Encountered error, retrying to fetch location')
+    console.log('Encountered error, retrying to get location')
     navigator.geolocation.getCurrentPosition(
         getWeather,
         error,
@@ -39,9 +55,12 @@ function error() {
     })
 }
 
-function forecast(data) {
-    var forecastData = data.properties.periods
-    var forecast = [
+async function forecast(forecastJSON) {
+    data.city = `${data.meta.relativeLocation.properties.city}, ${data.meta.relativeLocation.properties.state}`
+    document.getElementById('location').innerText = data.city;
+
+    var forecastData = forecastJSON.properties.periods;
+    data.forecast = [
         forecastData[0],
         forecastData[1],
         forecastData[2],
@@ -57,14 +76,26 @@ function forecast(data) {
         forecastData[12],
         forecastData[13]
     ]
-    console.table(forecast)
 
-    for(var i = 0; i < forecast.length; i++) {
-        console.log(forecast[i])
-        createCard(forecast[i])
+    for(var i = 0; i < data.forecast.length; i++) {
+        createCard(data.forecast[i])
+        if(i == data.forecast.length - 1) {
+            loadPage()
+        }
     }
+
+    return data
 }
 
 function createCard(forecast) {
+    console.log(forecast)
     var time = forecast.name;
+}
+
+function loadPage() {
+    var loading = document.getElementById('loading');
+    loading.style.opacity = '0';
+    setTimeout(() =>
+        loading.style.display = 'none'
+    ,1500)
 }
