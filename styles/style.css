@@ -1,8 +1,8 @@
 @font-face {
    font-family: 'LatoBlack';
-   src: url(/fonts/Lato-Bold.ttf);
+   src: url(../fonts/Lato-Bold.ttf);
 }
 @font-face {
    font-family: 'Montserrat';
-   src: url(/fonts/Montserrat-Regular.ttf);
+   src: url(../fonts/Montserrat-Regular.ttf);
 }
