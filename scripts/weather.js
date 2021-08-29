@@ -119,12 +119,12 @@ function createCard(forecast) {
     windDir.innerText = forecast.windDirection;
 
     var imgWindSpeed = document.createElement('img');
-    imgWindSpeed.src = '/images/windSpeed.png';
+    imgWindSpeed.src = './images/windSpeed.png';
     windCont.appendChild(imgWindSpeed);
     windCont.appendChild(windSpeed);
     var imgWindDir = document.createElement('img');
     imgWindDir.classList.add(`windDir-${forecast.windDirection}`)
-    imgWindDir.src = '/images/windDir.png';
+    imgWindDir.src = './images/windDir.png';
     windCont.appendChild(imgWindDir);
     windCont.appendChild(windDir);
 
