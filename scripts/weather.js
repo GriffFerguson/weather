@@ -8,17 +8,7 @@ navigator.geolocation.getCurrentPosition(
 
 var data = {
     meta: null,
-    time: null,
-    city: null,
     forecast: [],
-    time: null,
-    time: null,
-    time: null,
-    time: null,
-    time: null,
-    time: null,
-    time: null,
-    time: null
 }
 
 function getWeather(loc) {
