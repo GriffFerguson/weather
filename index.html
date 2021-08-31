@@ -53,18 +53,17 @@
 
         navKeys.left.addEventListener('click', e => {
             if (translation != 0) {
-                translation = translation + 263;
+                translation = translation + 16.35;
                 for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
-                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}px)`
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}rem)`
                 }
             }
         })
         navKeys.right.addEventListener('click', e => {
-            console.log('Right clicked');
-            if (translation != -2104) {
-                translation = translation - 263;
+            if (translation > -130) {
+                translation = translation - 16.35;
                 for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
-                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}px)`
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}rem)`
                 }
             }
         })

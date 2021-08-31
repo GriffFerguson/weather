@@ -1,7 +1,5 @@
 @import url(./style.css);
-:root {
-    font-size:16px;
-}
+:root {font-size:16px;}
 body {
     margin:0;
     padding:0;
@@ -13,19 +11,18 @@ body {
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 h1 {
     font-family: 'LatoBlack';
     text-align:center;
     font-weight: bolder;
-    margin:10px;
+    margin:0.6rem;
 }
 
 p {
     font-family:'Montserrat';
-    margin:5px;
+    margin:0.3rem;
 }
 
 
@@ -37,7 +34,6 @@ p {
     background-color:rgb(211, 211, 211);
     display:flex;
     opacity:1;
-    font-size:5rem;
     justify-content: center;
     align-items: center;
     flex-direction: row;
@@ -68,9 +64,9 @@ p {
 /* Weather section */
 main {
     width:auto;
-    max-width:1312px; /* Due to padding, max width is closer to 1578px */
-    margin-top:30px;
-    margin-bottom:30px;
+    max-width:81.6rem; /* Due to padding, max width is closer to 99.1rem */
+    margin-top:1.9rem;
+    margin-bottom:1.9rem;
     background-color: rgb(69, 102, 173);
     display:flex;
     flex-direction: row;
@@ -79,27 +75,29 @@ main {
     position:relative;
     padding:0;
     overflow-x:hidden;
-    padding-left:265px;
+    padding-left:17.5rem;
 }
 
 .forecast-card {
     color:white;
-    padding:10px;
-    min-height:200px;
+    padding:0.6rem;
+    min-height:12.5rem;
     margin:0;
-    min-width:240px;
+    width:15rem;
+    min-width:15rem;
     transition:transform 500ms;
 }
 
 .forecast-card:nth-child(odd) {background-color:rgb(69, 85, 233)}
 .forecast-card:nth-child(even) {background-color:rgb(32, 42, 133)}
-.forecast-card:not(:last-of-type) {border-right:3px rgb(160, 160, 160) solid;}
+.forecast-card:not(:last-of-type) {border-right:0.15rem rgb(160, 160, 160) solid;}
 #card1 {
-    border-right:5px rgb(190, 190, 190) solid;
+    border-right:0.3rem rgb(190, 190, 190) solid;
     background-color:rgb(34, 34, 107);
     position:fixed;
-    margin-left:-265px;
-    z-index:89
+    margin-left:-17.5rem;
+    z-index:89;
+    width:16rem;
 }
 
 /* Forecast card elements */
@@ -147,7 +145,7 @@ main {
 /* Navigation buttons */
 .navigator {
     position:absolute;
-    width:45px;
+    width:2.8rem;
     text-align: center;
     height:100%;
     display:flex;
@@ -170,10 +168,15 @@ main {
 .navigator:hover {opacity:1}
 .navigator:active {background-color:rgba(200, 200, 200, 0.4)}
 #left {
-    left:265px;
+    left:17.5rem;
     background-image: linear-gradient(to right, rgba(200,200,200,1),rgba(200,200,200,0));
 }
 #right {
     right:0;
     background-image: linear-gradient(to left, rgba(200,200,200,1),rgba(200,200,200,0));
+}
+
+
+@media only screen and (max-width:1600px) {
+
 }
