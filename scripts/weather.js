@@ -109,7 +109,7 @@ function createCard(forecast) {
     windDir.innerText = forecast.windDirection;
 
     var imgWindSpeed = document.createElement('img');
-    imgWindSpeed.src = './images/windSpeed.png';
+    imgWindSpeed.src = './images/windSpeed.svg';
     windCont.appendChild(imgWindSpeed);
     windCont.appendChild(windSpeed);
     var imgWindDir = document.createElement('img');
