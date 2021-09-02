@@ -1,3 +1,4 @@
+console.log("Getting location")
 navigator.geolocation.getCurrentPosition(
     getWeather,
     error,
@@ -12,20 +13,22 @@ var data = {
 }
 
 function getWeather(loc) {
+    console.log("Processing location")
     const pos = {
         lat: loc.coords.latitude,
         long: loc.coords.longitude
     }
 
-    console.log(`https://api.weather.gov/points/${pos.lat},${pos.long}`)
     fetch(`https://api.weather.gov/points/${pos.lat},${pos.long}`)
     .then(function(response) {
+        console.log(`Fetching data from: https://api.weather.gov/points/${pos.lat},${pos.long}`)
         return response.json()
     })
     .then(function(json) {
         data.meta = json.properties
         fetch(json.properties.forecast)
         .then(function(response) {
+            console.log(`Fetching weather data`)
             return response.json()
         })
         .then(function(json) {
@@ -46,6 +49,7 @@ function error() {
 }
 
 async function forecast(forecastJSON) {
+    console.log(`Processing data`)
     data.city = `${data.meta.relativeLocation.properties.city}, ${data.meta.relativeLocation.properties.state}`
     document.getElementById('location').innerText = data.city;
 
@@ -69,6 +73,7 @@ async function forecast(forecastJSON) {
 
     for(var i = 0; i < data.forecast.length; i++) {
         createCard(data.forecast[i])
+        console.log(`Creating card ${i + 1}`)
         if(i == data.forecast.length - 1) {
             loadPage()
         }
@@ -121,12 +126,15 @@ function createCard(forecast) {
     document.getElementById(cardID).appendChild(name);
     document.getElementById(cardID).appendChild(temp);
     document.getElementById(cardID).appendChild(windCont);
+    console.log('Created!')
 }
 
 function loadPage() {
+    console.log('Loading page...')
     var loading = document.getElementById('loading');
     loading.style.opacity = '0';
     setTimeout(() =>
         loading.style.display = 'none'
     ,1500)
+    console.log("Loaded!")
 }
