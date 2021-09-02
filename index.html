@@ -34,16 +34,13 @@
         <div id="down" class="navigator"></div>
     </main>
     <script async>
-        console.log("1")
         setTimeout(() => {
-            console.log("2")
             if(document.getElementById('loading').style.opacity != '0') {
                 document.getElementById('loading_text-wrapper').innerHTML +=
                 '<p>Experiencing delays? Wait a few more seconds then reload the page!' +
                 '<br>Make sure to click "Allow" when prompted for your location as well!</p>'
-                console.log("3")        
             }
-        }, 4000)
+        }, 7000)
     </script>
     <script src="./scripts/weather.js"></script>
     <script>
