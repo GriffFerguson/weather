@@ -14,7 +14,8 @@
     </div>
     <h1 id="title">Weather for <span id="location"></span></h1>
     <main>
-        <div id="left" class="navigator">&#706;</div>
+        <div id="left" class="navigator"></div>
+        <div id="up" class="navigator"></div>
         <div id="card1" class="forecast-card"></div>
         <div id="card2" class="forecast-card"></div>
         <div id="card3" class="forecast-card"></div>
@@ -29,7 +30,8 @@
         <div id="card12" class="forecast-card"></div>
         <div id="card13" class="forecast-card"></div>
         <div id="card14" class="forecast-card"></div>
-        <div id="right" class="navigator">&#707;</div>
+        <div id="right" class="navigator"></div>
+        <div id="down" class="navigator"></div>
     </main>
     <script async>
         console.log("1")
@@ -47,7 +49,9 @@
     <script>
         var navKeys = {
             left: document.getElementById('left'),
-            right: document.getElementById('right')
+            right: document.getElementById('right'),
+            down: document.getElementById('down'),
+            up: document.getElementById('up')
         }
         var translation = 0;
 
@@ -64,6 +68,22 @@
                 translation = translation - 16.35;
                 for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
                     document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}rem)`
+                }
+            }
+        })
+        navKeys.up.addEventListener('click', e => {
+            if (translation < 0) {
+                translation = translation + 15.35;
+                for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateY(${translation}rem)`
+                }
+            }
+        })
+        navKeys.down.addEventListener('click', e => {
+            if (translation > -130) {
+                translation = translation - 15.35;
+                for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateY(${translation}rem)`
                 }
             }
         })
