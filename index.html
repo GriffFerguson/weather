@@ -53,7 +53,7 @@
         var translation = 0;
 
         navKeys.left.addEventListener('click', e => {
-            if (translation != 0) {
+            if (translation < 0) {
                 translation = translation + 16.35;
                 for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
                     document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}rem)`

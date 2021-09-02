@@ -34,6 +34,22 @@ function getWeather(loc) {
         .then(function(json) {
             forecast(json)
         })
+        .catch(function(error) {
+            console.log(`Experienced error, reloading page.\r\nError message: ${error}`)
+            document.getElementById("loading_text-wrapper").innerHTML +=
+            "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>"
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000)
+        })
+    })
+    .catch(function(error) {
+        console.log(`Experienced error, reloading page.\r\nError message: ${error}`)
+        document.getElementById("loading_text-wrapper").innerHTML +=
+        "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>"
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000)
     })
 }
 
