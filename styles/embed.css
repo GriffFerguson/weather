@@ -1,0 +1,9 @@
+.embed {
+    background-color:rgb(34, 34, 107);
+    background-image: none;
+}
+.embed #title {color:white}
+.embed main {
+    margin-top:0.5rem;
+    margin-bottom:0.5rem;
+}

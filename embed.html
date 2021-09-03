@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="./styles/main.css" rel="stylesheet">
+    <link href="./styles/embed.css" rel="stylesheet">
+</head>
+<body class="embed">
+    <div id="loading">
+        <div id="loading_text-wrapper">
+            <h1>Loading...</h1>
+        </div>
+    </div>
+    <h1 id="title">Weather for <span id="location"></span></h1>
+    <main>
+        <div id="left" class="navigator"></div>
+        <div id="up" class="navigator"></div>
+        <div id="card1" class="forecast-card"></div>
+        <div id="card2" class="forecast-card"></div>
+        <div id="card3" class="forecast-card"></div>
+        <div id="card4" class="forecast-card"></div>
+        <div id="card5" class="forecast-card"></div>
+        <div id="card6" class="forecast-card"></div>
+        <div id="card7" class="forecast-card"></div>
+        <div id="card8" class="forecast-card"></div>
+        <div id="card9" class="forecast-card"></div>
+        <div id="card10" class="forecast-card"></div>
+        <div id="card11" class="forecast-card"></div>
+        <div id="card12" class="forecast-card"></div>
+        <div id="card13" class="forecast-card"></div>
+        <div id="card14" class="forecast-card"></div>
+        <div id="right" class="navigator"></div>
+        <div id="down" class="navigator"></div>
+    </main>
+    <script async>
+        setTimeout(() => {
+            if(document.getElementById('loading').style.opacity != '0') {
+                document.getElementById('loading_text-wrapper').innerHTML +=
+                '<p>Experiencing delays? Wait a few more seconds then reload the page!' +
+                '<br>Make sure to click "Allow" when prompted for your location as well!</p>'
+            }
+        }, 7000)
+    </script>
+    <script src="./scripts/location.js"></script>
+    <script src="./scripts/weather.js"></script>
+    <script>
+        var navKeys = {
+            left: document.getElementById('left'),
+            right: document.getElementById('right'),
+            down: document.getElementById('down'),
+            up: document.getElementById('up')
+        }
+        var translation = 0;
+
+        navKeys.left.addEventListener('click', e => {
+            if (translation < 0) {
+                translation = translation + 16.35;
+                for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}rem)`
+                }
+            }
+        })
+        navKeys.right.addEventListener('click', e => {
+            if (translation > -130) {
+                translation = translation - 16.35;
+                for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateX(${translation}rem)`
+                }
+            }
+        })
+        navKeys.up.addEventListener('click', e => {
+            if (translation < 0) {
+                translation = translation + 15.35;
+                for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateY(${translation}rem)`
+                }
+            }
+        })
+        navKeys.down.addEventListener('click', e => {
+            if (translation > -130) {
+                translation = translation - 15.35;
+                for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
+                    document.getElementsByClassName('forecast-card')[i].style.transform = `translateY(${translation}rem)`
+                }
+            }
+        })
+    </script>
+</body>
+</html>
