@@ -36,19 +36,21 @@ function getWeather() {
         .catch(function(error) {
             console.log(`Experienced error, reloading page.\r\nError message: ${error}`)
             document.getElementById("loading_text-wrapper").innerHTML +=
-            "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>"
+            "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>" +
+            "<p>If the problem persists, please ensure you are within the United States and have allowed access to your location!"
             setTimeout(() => {
                 window.location.reload();
-            }, 2000)
+            }, 3000)
         })
     })
     .catch(function(error) {
         console.log(`Experienced error, reloading page.\r\nError message: ${error}`)
         document.getElementById("loading_text-wrapper").innerHTML +=
-        "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>"
+        "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>" +
+        "<p>If the problem persists, please ensure you are within the United States and have allowed access to your location!"
         setTimeout(() => {
             window.location.reload();
-        }, 2000)
+        }, 3000)
     })
 }
 
