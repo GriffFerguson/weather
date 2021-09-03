@@ -1,24 +1,23 @@
-console.log("Getting location")
-navigator.geolocation.getCurrentPosition(
-    getWeather,
-    error,
-    {
-        timeout: 30000,
-        maximumAge: 0
-})
+console.log("Processing location")
+
+var url = new URLSearchParams(window.location.search);
+var pos = {
+    lat: url.get('lat'),
+    long: url.get('long')
+}
 
 var data = {
     meta: null,
     forecast: [],
 }
 
-function getWeather(loc) {
-    console.log("Processing location")
-    const pos = {
-        lat: loc.coords.latitude,
-        long: loc.coords.longitude
-    }
+if(pos.lat == null || pos.long == null && pos.lat == "" || pos.long == "") {
+    console.log("Could not get location from URL")
+} else {
+    getWeather()
+}
 
+function getWeather() {
     fetch(`https://api.weather.gov/points/${pos.lat},${pos.long}`)
     .then(function(response) {
         console.log(`Fetching data from: https://api.weather.gov/points/${pos.lat},${pos.long}`)
@@ -50,17 +49,6 @@ function getWeather(loc) {
         setTimeout(() => {
             window.location.reload();
         }, 2000)
-    })
-}
-
-function error() {
-    console.log('Encountered error, retrying to get location')
-    navigator.geolocation.getCurrentPosition(
-        getWeather,
-        error,
-        {
-            timeout: 30000,
-            maximumAge: 0
     })
 }
 
