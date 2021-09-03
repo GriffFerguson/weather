@@ -134,13 +134,21 @@ main {
 }
 
 .windDir-N {transform: rotate(0deg);}
+.windDir-NNE {transform: rotate(22.5deg);}
 .windDir-NE {transform: rotate(45deg);}
+.windDir-ENE {transform: rotate(67.5deg);}
 .windDir-E {transform: rotate(90deg);}
+.windDir-ESE {transform: rotate(112.5deg);}
 .windDir-SE {transform: rotate(135deg);}
+.windDir-SSE {transform: rotate(157.5deg);}
 .windDir-S {transform: rotate(180deg);}
+.windDir-SSW {transform: rotate(-157.5deg);}
 .windDir-SW {transform: rotate(-135deg);}
+.windDir-WSW {transform: rotate(-112.5deg);}
 .windDir-W {transform: rotate(-90deg);}
+.windDir-WNW {transform: rotate(-67.5deg);}
 .windDir-NW {transform: rotate(-45deg);}
+.windDir-NNW {transform: rotate(-22.5deg);}
 
 /* Navigation buttons */
 .navigator {
