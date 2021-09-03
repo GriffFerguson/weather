@@ -68,7 +68,6 @@ main {
     max-width:81.6rem; /* Due to padding, max width is closer to 99.1rem */
     margin-top:1.9rem;
     margin-bottom:1.9rem;
-    background-color: rgb(69, 102, 173);
     display:flex;
     flex-direction: row;
     align-items: center;
@@ -195,16 +194,8 @@ main {
 }
 
 
-@media only screen and (min-width:1200px) and (max-width:1600px) {
-    :root {
-        font-size:12px;
-    }
-}
-@media only screen and (max-width:1200px) {
-    :root {
-        font-size:8px;
-    }
-}
+@media only screen and (min-width:1200px) and (max-width:1600px) {:root {font-size:12px;}}
+@media only screen and (max-width:1200px) {:root {font-size:8px;}}
 @media only screen and (max-width:800px) {
     main {
         width:auto;
