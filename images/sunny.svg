@@ -7,7 +7,7 @@
         path {stroke-width: 5px;}
     </style>
     <g>
-        <circle cx="50" cy="50" r="28" />
+        <circle cx="50" cy="50" r="29" />
         <path d="
         M50 50 L50 0
         M50 50 L90 10
