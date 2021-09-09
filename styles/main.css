@@ -179,6 +179,7 @@ main {
 .navigator:is(#up, #down) {
     width:16.2rem;
     height:2.8rem;
+    display: none;
     
 }
 .navigator:hover {opacity:1}

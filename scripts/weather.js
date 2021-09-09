@@ -88,7 +88,7 @@ async function forecast(forecastJSON) {
     return data
 }
 
-function createCard(forecast) {
+async function createCard(forecast) {
     var cardID = 'card' + forecast.number;
 
     // Forecast time
@@ -121,11 +121,13 @@ function createCard(forecast) {
 
     var imgWindSpeed = document.createElement('img');
     imgWindSpeed.src = './images/windSpeed.svg';
+    imgWindSpeed.setAttribute('alt', 'wind speed')
     windCont.appendChild(imgWindSpeed);
     windCont.appendChild(windSpeed);
     var imgWindDir = document.createElement('img');
     imgWindDir.classList.add(`windDir-${forecast.windDirection}`)
     imgWindDir.src = './images/windDir.svg';
+    imgWindDir.setAttribute('alt', 'wind direction')
     windCont.appendChild(imgWindDir);
     windCont.appendChild(windDir);
 
@@ -135,7 +137,7 @@ function createCard(forecast) {
     console.log('Created!')
 }
 
-function loadPage() {
+async function loadPage() {
     console.log('Loading page...')
     var loading = document.getElementById('loading');
     loading.style.opacity = '0';
