@@ -9,6 +9,7 @@ var pos = {
 var data = {
     meta: null,
     forecast: [],
+    city: null
 }
 
 if(pos.lat == null || pos.long == null && pos.lat == "" || pos.long == "") {
@@ -54,7 +55,8 @@ function getWeather() {
     })
 }
 
-async function forecast(forecastJSON) {
+// Weekly forecast
+function forecast(forecastJSON) {
     console.log(`Processing data`)
     data.city = `${data.meta.relativeLocation.properties.city}, ${data.meta.relativeLocation.properties.state}`
     document.getElementById('location').innerText = data.city;
@@ -95,6 +97,17 @@ async function createCard(forecast) {
     var name = document.createElement('h2')
     name.innerText = forecast.name;
 
+    //Details
+    forecastSummary = summary(forecast.shortForecast)
+    var detail = document.createElement('p')
+    detail.innerText = forecastSummary[0]
+    detail.id = `detail_${cardID}`
+    var detailImg = document.createElement('img')
+    detailImg.classList.add('summary')
+    detailImg.src = `/images/${forecastSummary[1]}`
+    detailImg.alt = forecastSummary[0]
+    
+
     // Temperature
     var temp = document.createElement('p')
     temp.classList.add('temperature')
@@ -109,6 +122,7 @@ async function createCard(forecast) {
 
     temp.innerText = `${forecast.temperature}\u00B0${forecast.temperatureUnit}`;
     
+
     // Wind
     var windCont = document.createElement('div');
     windCont.classList.add('wind-container');
@@ -131,9 +145,12 @@ async function createCard(forecast) {
     windCont.appendChild(imgWindDir);
     windCont.appendChild(windDir);
 
-    document.getElementById(cardID).appendChild(name);
-    document.getElementById(cardID).appendChild(temp);
-    document.getElementById(cardID).appendChild(windCont);
+    const card = document.getElementById(cardID);
+    card.appendChild(name);
+    card.appendChild(detail);
+    card.appendChild(detailImg);
+    card.appendChild(temp);
+    card.appendChild(windCont);
     console.log('Created!')
 }
 
@@ -145,4 +162,24 @@ async function loadPage() {
         loading.style.display = 'none'
     ,1500)
     console.log("Loaded!")
+}
+
+function summary(forecast) {
+    var forecastSummary;
+    if(forecast.indexOf('Sunny') != -1 || forecast.indexOf('Clear') != -1) {
+        forecastSummary = ['Clear','sunny.svg',0]
+    }
+    if(forecast.indexOf('Cloudy') != -1 ) {
+        forecastSummary = ['Overcast','cloudy.svg',2]
+    }
+    if(forecast.indexOf('Mostly') != -1 || forecast.indexOf('Partly') != -1) {
+        forecastSummary = ['Partly Cloudy','partly.svg',1]
+    }
+    if(forecast.indexOf('Showers') != -1 || forecast.indexOf('Rain') != -1) {
+        forecastSummary = ['Rainy','cloudy.svg',3]
+    }
+    if(forecast.indexOf('Thunderstorms') != -1) {
+        forecastSummary = ['Thunderstorms','cloudy.svg',3]
+    }
+    return forecastSummary
 }
