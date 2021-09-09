@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="100" width="170" viewBox="0 0 170 110">
+    <style>
+        .sun {
+            fill: rgb(255, 255, 0);
+            stroke: rgb(255, 255, 0);
+        }
+        .cloud {
+            fill: rgb(180, 180, 180);
+            stroke: rgb(180, 180, 180);
+        }
+    </style>
+    <g class="sun">
+        <circle cx="50" cy="50" r="29" />
+        <path d="
+        M50 50 L50 0
+        M50 50 L90 10
+        M50 50 L100 50
+        M50 50 L90 90
+        M50 50 L50 100
+        M50 50 L10 90
+        M50 50 L0 50
+        M50 50 L10 10
+        " />
+    </g>
+    <path class="cloud" d="
+        M35 32
+        c0 0 20 -10 40 0
+        c0 0 30 -30 50 15
+        c-40 -20  30 -30 25 0
+        c0 0 30 10 0 40
+        c0 0 0 30 -40 10
+        c0 0 -15 15 -30 0
+        c0 0 -20 15 -35 -10
+        c0 0 -30 0 -20 -30
+        c0 0 -10 -10 10 -25
+        Z
+    " />
+</svg>
+</svg>
