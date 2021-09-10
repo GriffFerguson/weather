@@ -72,7 +72,7 @@
         })
         navKeys.up.addEventListener('click', e => {
             if (translation < 0) {
-                translation = translation + 15.35;
+                translation = translation + 18.35;
                 for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
                     document.getElementsByClassName('forecast-card')[i].style.transform = `translateY(${translation}rem)`
                 }
@@ -80,7 +80,7 @@
         })
         navKeys.down.addEventListener('click', e => {
             if (translation > -130) {
-                translation = translation - 15.35;
+                translation = translation - 18.35;
                 for(var i = 1; i < document.getElementsByClassName('forecast-card').length; i++) {
                     document.getElementsByClassName('forecast-card')[i].style.transform = `translateY(${translation}rem)`
                 }
