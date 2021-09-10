@@ -23,6 +23,6 @@ function redirect(loc) {
 }
 
 function error() {
-    console.log('Encountered error, retrying to get location')
-    window.location.reload()
+    console.log('Encountered error receiving location')
+    alert('Whoops! We couldn\'t find your location! please!\nPlease click change the permissions for this site to let us access your current location.')
 }
