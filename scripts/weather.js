@@ -80,8 +80,8 @@ function forecast(forecastJSON) {
     ]
 
     for(var i = 0; i < data.forecast.length; i++) {
-        createCard(data.forecast[i])
         console.log(`Creating card ${i + 1}`)
+        createCard(data.forecast[i])
         if(i == data.forecast.length - 1) {
             loadPage()
         }
@@ -102,10 +102,10 @@ async function createCard(forecast) {
     var detail = document.createElement('p')
     detail.innerText = forecastSummary[0]
     detail.id = `detail_${cardID}`
-    var detailImg = document.createElement('img')
+    var detailImg = document.createElement('div')
     detailImg.classList.add('summary')
-    detailImg.src = `/images/${forecastSummary[1]}`
-    detailImg.alt = forecastSummary[0]
+    detailImg.setAttribute('style', `background-image: url('/images/${forecastSummary[1]}')`)
+    detailImg.ariaLabel = forecastSummary[0]
     
 
     // Temperature
