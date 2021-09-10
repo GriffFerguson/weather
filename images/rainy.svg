@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="160" width="150" viewBox="0 0 150 160">
+    <style>
+        .cloud {
+            fill:rgb(180,180,180);
+            stroke:rgb(180,180,180);
+        }
+        .rain {
+            stroke:rgb(0, 171, 255);
+            stroke-width: 4px;
+        }
+    </style>
+    <g class="rain">
+        <path d="M 30 60 l-15 45" />
+        <path d="M 50 80 l-10 25" />
+        <path d="M 70 85 l-10 35" />
+        <path d="M 95 85 l-10 35" />
+        <path d="M 120 80 l-10 30" />
+        <path d="M 35 115 l-10 25" />
+        <path d="M 58 130 l-10 25" />
+        <path d="M 85 130 l-10 25" />
+        <path d="M 110 125 l-10 25" />
+    </g>
+    <path class="cloud" d="
+        M20 20
+        c0 0 20 -10 40 0
+        c0 0 30 -30 50 15
+        c-40 -20  30 -30 25 0
+        c0 0 30 10 0 40
+        c0 0 0 30 -40 10
+        c0 0 -15 15 -30 0
+        c0 0 -20 15 -35 -10
+        c0 0 -30 0 -20 -30
+        c0 0 -10 -10 10 -25
+        Z
+    " />
+</svg>
