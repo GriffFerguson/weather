@@ -176,10 +176,10 @@ function summary(forecast) {
         forecastSummary = ['Partly Cloudy','partly.svg',1]
     }
     if(forecast.indexOf('Showers') != -1 || forecast.indexOf('Rain') != -1) {
-        forecastSummary = ['Rainy','cloudy.svg',3]
+        forecastSummary = ['Rainy','rain.svg',3]
     }
     if(forecast.indexOf('Thunderstorms') != -1) {
-        forecastSummary = ['Thunderstorms','cloudy.svg',3]
+        forecastSummary = ['Thunderstorms','thunder.svg',4]
     }
     return forecastSummary
 }
