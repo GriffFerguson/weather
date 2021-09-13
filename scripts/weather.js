@@ -90,7 +90,7 @@ function forecast(forecastJSON) {
     return data
 }
 
-async function createCard(forecast) {
+function createCard(forecast) {
     var cardID = 'card' + forecast.number;
 
     // Forecast time
@@ -122,35 +122,52 @@ async function createCard(forecast) {
 
     temp.innerText = `${forecast.temperature}\u00B0${forecast.temperatureUnit}`;
     
+    var twoCont = document.createElement('div');
+    twoCont.classList.add('two-container');
+    if(forecastSummary[2] != 5) {
+        // Wind
+        var windSpeed = document.createElement('p');
+        windSpeed.innerText = forecast.windSpeed;
+        var windDir = document.createElement('p');
+        windDir.innerText = forecast.windDirection;
 
-    // Wind
-    var windCont = document.createElement('div');
-    windCont.classList.add('wind-container');
-    var windSpeed = document.createElement('p');
-    windSpeed.classList.add('windSpeed');
-    windSpeed.innerText = forecast.windSpeed;
-    var windDir = document.createElement('p');
-    windDir.classList.add('windDir');
-    windDir.innerText = forecast.windDirection;
-
-    var imgWindSpeed = document.createElement('img');
-    imgWindSpeed.src = './images/windSpeed.svg';
-    imgWindSpeed.setAttribute('alt', 'wind speed')
-    windCont.appendChild(imgWindSpeed);
-    windCont.appendChild(windSpeed);
-    var imgWindDir = document.createElement('img');
-    imgWindDir.classList.add(`windDir-${forecast.windDirection}`)
-    imgWindDir.src = './images/windDir.svg';
-    imgWindDir.setAttribute('alt', 'wind direction')
-    windCont.appendChild(imgWindDir);
-    windCont.appendChild(windDir);
+        var imgWindSpeed = document.createElement('img');
+        imgWindSpeed.src = './images/windSpeed.svg';
+        imgWindSpeed.setAttribute('alt', 'wind speed')
+        twoCont.appendChild(imgWindSpeed);
+        twoCont.appendChild(windSpeed);
+        var imgWindDir = document.createElement('img');
+        imgWindDir.classList.add(`windDir-${forecast.windDirection}`)
+        imgWindDir.src = './images/windDir.svg';
+        imgWindDir.setAttribute('alt', 'wind direction')
+        twoCont.appendChild(imgWindDir);
+        twoCont.appendChild(windDir);
+    } else if (forecastSummary[2] == 5) {
+        //Rain
+        var rainChance = document.createElement('p');
+        rainChance.innerText = forecast.detailedForecast.split('is ')[1].split('.')[0]
+        var rainCloudImg = document.createElement('img')
+        rainCloudImg.src = '/images/rainy.svg';
+        rainCloudImg.alt = 'rain cloud';
+        twoCont.appendChild(rainCloudImg)
+        twoCont.appendChild(rainChance)
+        var warning = document.createElement('a')
+        warning.href = '#tropical-storm'
+        warning.setAttribute('onclick', 'warning()')
+        warning.innerText = 'Stay safe!'
+        var warningImg = document.createElement('img')
+        warningImg.src = '/images/thunder.svg';
+        warningImg.alt = 'thunderstorm';
+        twoCont.appendChild(warningImg)
+        twoCont.appendChild(warning)
+    }
 
     const card = document.getElementById(cardID);
     card.appendChild(name);
     card.appendChild(detail);
     card.appendChild(detailImg);
     card.appendChild(temp);
-    card.appendChild(windCont);
+    card.appendChild(twoCont);
     console.log('Created!')
 }
 
@@ -162,6 +179,7 @@ async function loadPage() {
         loading.style.display = 'none'
     ,1500)
     console.log("Loaded!")
+    details()
 }
 
 function summary(forecast) {
@@ -180,6 +198,9 @@ function summary(forecast) {
     }
     if(forecast.indexOf('Thunderstorms') != -1) {
         forecastSummary = ['Thunderstorms','thunder.svg',4]
+    }
+    if(forecast.indexOf('Tropical Storm') != -1) {
+        forecastSummary = ['Tropical Storm','thunder.svg',5]
     }
     return forecastSummary
 }
