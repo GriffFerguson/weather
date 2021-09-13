@@ -152,7 +152,7 @@ function createCard(forecast) {
         twoCont.appendChild(rainCloudImg)
         twoCont.appendChild(rainChance)
         var warning = document.createElement('a')
-        warning.href = '#tropical-storm'
+        warning.href = '#stay-safe'
         warning.setAttribute('onclick', 'warning()')
         warning.innerText = 'Stay safe!'
         var warningImg = document.createElement('img')
