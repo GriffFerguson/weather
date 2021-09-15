@@ -19,7 +19,11 @@ if(pos.lat == null || pos.long == null && pos.lat == "" || pos.long == "") {
 }
 
 function getWeather() {
-    fetch(`https://api.weather.gov/points/${pos.lat},${pos.long}`)
+    fetch(`https://api.weather.gov/points/${pos.lat},${pos.long}`, {
+        headers: {
+            'accept': 'application/geo+json'
+        }
+    })
     .then(function(response) {
         console.log(`Fetching data from: https://api.weather.gov/points/${pos.lat},${pos.long}`)
         return response.json()
@@ -194,7 +198,7 @@ function summary(forecast) {
         forecastSummary = ['Partly Cloudy','partly.svg',1]
     }
     if(forecast.indexOf('Showers') != -1 || forecast.indexOf('Rain') != -1) {
-        forecastSummary = ['Rainy','rain.svg',3]
+        forecastSummary = ['Rainy','rainy.svg',3]
     }
     if(forecast.indexOf('Thunderstorms') != -1) {
         forecastSummary = ['Thunderstorms','thunder.svg',4]

@@ -25,6 +25,7 @@ p, a, li {
     font-family:'Montserrat';
     margin:0.3rem;
 }
+a {margin:0;}
 
 a {
     color:white;

@@ -1,5 +1,5 @@
 var param = window.location.href.split('#')[1];
-if(type == 'stay-safe') {
+if(param == 'stay-safe') {
     warning()
 }
 
