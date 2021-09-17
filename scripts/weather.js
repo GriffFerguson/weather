@@ -15,7 +15,8 @@ var data = {
 if(pos.lat == null || pos.long == null && pos.lat == "" || pos.long == "") {
     console.log("Could not get location from URL")
 } else {
-    getWeather()
+    getWeather();
+    weatherAlerts(); //alerts.js
 }
 
 function getWeather() {
