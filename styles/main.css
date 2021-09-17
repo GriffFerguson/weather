@@ -286,18 +286,18 @@ main {
     font-weight: bold;
     margin:0;
 }
-.weather-warning-container p:nth-of-type(1) {
-    font-weight: bold;
-    text-decoration: underline;
-}
-.weather-warning-container p:nth-of-type(2) {text-decoration: underline;}
-.weather-warning-container p:nth-of-type(4) {font-weight: bold;}
 .weather-warning-container p {
     margin-left:0;
     margin-right:0;
     margin-top:0.4rem;
     margin-bottom:0.4rem;
 }
+.weather-warning-container p:nth-of-type(1) {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.weather-warning-container p:nth-of-type(2) {text-decoration: underline;}
+.weather-warning-container p:nth-of-type(4) {font-weight: bold;}
 
 @media only screen and (min-width:1200px) and (max-width:1600px) {:root {font-size:12px;}}
 @media only screen and (max-width:1200px) {:root {font-size:8px;}}
