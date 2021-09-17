@@ -11,7 +11,6 @@ body {
     display:flex;
     flex-direction: column;
     align-items: center;
-    overflow:hidden;
     transition:background-image 2000ms;
 }
 
@@ -105,7 +104,7 @@ main {
 #card1 {
     border-right:0.3rem rgb(190, 190, 190) solid;
     background-color:rgb(34, 34, 107);
-    position:fixed;
+    position:absolute;
     margin-left:-17.5rem;
     z-index:89;
     width:16rem;
@@ -256,7 +255,6 @@ main {
     background-color:rgb(90, 0, 0);
     color:white;
     padding:1%;
-    padding-bottom:0.2%;
     font-family:'Montserrat';
     font-weight: bold;
     text-decoration: none;
@@ -270,7 +268,8 @@ main {
     background-color:rgb(90, 0, 0);
     color:white;
     padding:1%;
-    padding-top:0;
+    padding-top:0%;
+    margin-top:-0.2%;
 }
 .weather-warning-container {
     padding-left:1%;
@@ -287,10 +286,12 @@ main {
     font-weight: bold;
     margin:0;
 }
-.weather-warning-container p:first-of-type {
+.weather-warning-container p:nth-of-type(1) {
     font-weight: bold;
     text-decoration: underline;
 }
+.weather-warning-container p:nth-of-type(2) {text-decoration: underline;}
+.weather-warning-container p:nth-of-type(4) {font-weight: bold;}
 .weather-warning-container p {
     margin-left:0;
     margin-right:0;

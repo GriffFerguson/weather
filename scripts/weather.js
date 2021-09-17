@@ -88,6 +88,8 @@ function forecast(forecastJSON) {
         console.log(`Creating card ${i + 1}`)
         createCard(data.forecast[i])
         if(i == data.forecast.length - 1) {
+            console.log('Created all forecast cards')
+            loadStatus++;
             loadPage()
         }
     }
@@ -176,15 +178,20 @@ function createCard(forecast) {
     console.log('Created!')
 }
 
+var loadStatus = 0;
 async function loadPage() {
-    console.log('Loading page...')
-    var loading = document.getElementById('loading');
-    loading.style.opacity = '0';
-    setTimeout(() =>
-        loading.style.display = 'none'
-    ,1500)
-    console.log("Loaded!")
-    details()
+    if(loadStatus == 2) {
+        console.log('Loading page...')
+        var loading = document.getElementById('loading');
+        loading.style.opacity = '0';
+        setTimeout(() =>
+            loading.style.display = 'none'
+        ,1500)
+        console.log("Loaded!")
+        details()
+    } else {
+        console.log('Awaiting two load confirmations')
+    }
 }
 
 function summary(forecast) {

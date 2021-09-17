@@ -14,8 +14,8 @@
         </div>
     </div>
     <h1 id="title">Weather for <span id="location"></span></h1>
-    <a id="warnings-label">Weather alerts: </a>
-    <section id="warnings"></section>
+    <a id="warnings-label" href="#warnings">Weather alerts: </a>
+    <section style="display:none" id="warnings"></section>
     <main>
         <div id="left" class="navigator"></div>
         <div id="up" class="navigator"></div>
@@ -48,7 +48,7 @@
     <script src="./scripts/location.js"></script>
     <script src="./scripts/alerts.js"></script>
     <script src="./scripts/weather.js"></script>
-    <script>
+    <script async>
         var navKeys = {
             left: document.getElementById('left'),
             right: document.getElementById('right'),
@@ -91,6 +91,6 @@
         })
     </script>
     <script src="/scripts/details.js"></script>
-    <script src="/scripts/warning.js"></script>
+    <script async src="/scripts/warning.js"></script>
 </body>
 </html>
