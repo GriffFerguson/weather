@@ -250,6 +250,54 @@ main {
     cursor: pointer;
 }
 
+/* Weather alerts */
+#warnings-label {
+    width:70%;
+    background-color:rgb(90, 0, 0);
+    color:white;
+    padding:1%;
+    padding-bottom:0.2%;
+    font-family:'Montserrat';
+    font-weight: bold;
+    text-decoration: none;
+    margin:0;
+    font-size:1.5rem;
+}
+#warnings {
+    width:70%;
+    margin-left:15%;
+    margin-right:15%;
+    background-color:rgb(90, 0, 0);
+    color:white;
+    padding:1%;
+    padding-top:0;
+}
+.weather-warning-container {
+    padding-left:1%;
+    padding-right:1%;
+}
+.weather-warning-container:not(:first-of-type) {
+    border-top:2px solid white;
+    margin-top: 2em;
+    padding-top: 2em;
+}
+.weather-warning-container h2 {
+    font-family:'Montserrat';
+    font-size:1.4rem;
+    font-weight: bold;
+    margin:0;
+}
+.weather-warning-container p:first-of-type {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.weather-warning-container p {
+    margin-left:0;
+    margin-right:0;
+    margin-top:0.4rem;
+    margin-bottom:0.4rem;
+}
+
 @media only screen and (min-width:1200px) and (max-width:1600px) {:root {font-size:12px;}}
 @media only screen and (max-width:1200px) {:root {font-size:8px;}}
 @media only screen and (max-width:800px) {:root {font-size:6px;}}
