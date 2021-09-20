@@ -1,10 +1,4 @@
-console.log("Processing location")
-
-var url = new URLSearchParams(window.location.search);
-var pos = {
-    lat: url.get('lat'),
-    long: url.get('long')
-}
+console.log("Awaiting start in weather.js")
 
 var data = {
     meta: null,
@@ -12,21 +6,15 @@ var data = {
     city: null
 }
 
-if(pos.lat == null || pos.long == null && pos.lat == "" || pos.long == "") {
-    console.log("Could not get location from URL")
-} else {
-    getWeather();
-    weatherAlerts(); //alerts.js
-}
-
-function getWeather() {
-    fetch(`https://api.weather.gov/points/${pos.lat},${pos.long}`, {
+function getWeather(lat, long) {
+    console.log('Beginning to gather weather data')
+    fetch(`https://api.weather.gov/points/${lat},${long}`, {
         headers: {
             'accept': 'application/geo+json'
         }
     })
     .then(function(response) {
-        console.log(`Fetching data from: https://api.weather.gov/points/${pos.lat},${pos.long}`)
+        console.log(`Fetching data from: https://api.weather.gov/points/${lat},${long}`)
         return response.json()
     })
     .then(function(json) {
@@ -176,22 +164,6 @@ function createCard(forecast) {
     card.appendChild(temp);
     card.appendChild(twoCont);
     console.log('Created!')
-}
-
-var loadStatus = 0;
-async function loadPage() {
-    if(loadStatus == 2) {
-        console.log('Loading page...')
-        var loading = document.getElementById('loading');
-        loading.style.opacity = '0';
-        setTimeout(() =>
-            loading.style.display = 'none'
-        ,1500)
-        console.log("Loaded!")
-        details()
-    } else {
-        console.log('Awaiting two load confirmations')
-    }
 }
 
 function summary(forecast) {

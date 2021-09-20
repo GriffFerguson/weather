@@ -40,7 +40,7 @@ navKeys.down.addEventListener('click', e => {
     }
 })
 
-// Load screen
+// Loading screen
 setTimeout(() => {
     if(document.getElementById('loading').style.opacity != '0') {
         document.getElementById('loading_text-wrapper').innerHTML +=
@@ -48,3 +48,23 @@ setTimeout(() => {
         '<br>Make sure to click "Allow" when prompted for your location as well!</p>'
     }
 }, 7000)
+
+//Load page
+var loadStatus = 0;
+async function loadPage() {
+    if(loadStatus == 2) {
+        console.log('Loading page...')
+        var loading = document.getElementById('loading');
+        loading.style.opacity = '0';
+        setTimeout(() =>
+            loading.style.display = 'none'
+        ,1500)
+        console.log("Loaded!")
+        details()
+    } else {
+        console.log('Awaiting two load confirmations')
+    }
+}
+
+//Param var
+var param = window.location.href.split('#')[1];

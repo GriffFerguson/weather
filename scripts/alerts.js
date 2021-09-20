@@ -1,8 +1,9 @@
+console.log('Awaiting start in alerts.js')
+
 var warningsObj = {
     label: document.getElementById('warnings-label'),
     sec: document.getElementById('warnings')
 }
-var param = window.location.href.split('#')[1];
 if(param == 'warnings') {
     displayAlerts()
 }
@@ -20,22 +21,22 @@ function displayAlerts(e) {
     }
 }
 
-console.log('Beginning to gather weather alerts')
-async function weatherAlerts() {
-    fetch(`https://api.weather.gov/alerts/active?point=${pos.lat},${pos.long}`, {
+function weatherAlerts(lat, long) {
+    console.log('Beginning to gather weather alerts')
+    fetch(`https://api.weather.gov/alerts/active?point=${lat},${long}`, {
         headers: {
             'accept': 'application/geo+json'
         }
     })
     .then(function(response) {
-        console.log(`Fetching weather alerts from https://api.weather.gov/alerts/active?point=${pos.lat},${pos.long}`)
+        console.log(`Fetching weather alerts from https://api.weather.gov/alerts/active?point=${lat},${long}`)
         return response.json()
     })
     .then(function(json) {
         formatAlerts(json.features)
     })
     .catch(function(error) {
-        console.log(`Experienced error, reloading page.\r\nError message: ${error}`)
+        console.log(`Experienced error, reloading page.\nError message: ${error}`)
         document.getElementById("loading_text-wrapper").innerHTML +=
         "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>" +
         "<p>If the problem persists, please ensure you are within the United States and have allowed access to your location!"

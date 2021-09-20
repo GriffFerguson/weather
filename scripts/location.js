@@ -1,11 +1,15 @@
 console.log("Getting location")
+
+//Search URL
 var loc_url = new URLSearchParams(window.location.search);
 var loc_pos = {
     lat: loc_url.get('lat'),
     long: loc_url.get('long')
 }
 
+//
 if(loc_pos.lat == null || loc_pos.long == null && loc_pos.lat == "" || loc_pos.long == "") {
+    console.log("Could not get location from URL")
     navigator.geolocation.getCurrentPosition(
         redirect,
         error,
@@ -15,6 +19,8 @@ if(loc_pos.lat == null || loc_pos.long == null && loc_pos.lat == "" || loc_pos.l
     })
 } else {
     console.log("Location received in URL")
+    getWeather(loc_pos.lat, loc_pos.long); //weather.js
+    weatherAlerts(loc_pos.lat, loc_pos.long); //alerts.js
 }
 
 function redirect(loc) {
