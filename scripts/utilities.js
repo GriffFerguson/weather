@@ -1,3 +1,6 @@
+//Param var
+var param = window.location.href.split('#')[1] == undefined ? '' : window.location.href.split('#')[1];
+
 // Navkeys
 var navKeys = {
     left: document.getElementById('left'),
@@ -51,7 +54,7 @@ setTimeout(() => {
 
 //Load page
 var loadStatus = 0;
-async function loadPage() {
+function loadPage() {
     if(loadStatus == 2) {
         console.log('Loading page...')
         var loading = document.getElementById('loading');
@@ -65,6 +68,3 @@ async function loadPage() {
         console.log('Awaiting two load confirmations')
     }
 }
-
-//Param var
-var param = window.location.href.split('#')[1];

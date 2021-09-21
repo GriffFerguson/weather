@@ -1,20 +1,22 @@
 // Called from utilities.js
 var bgcolorBase = [44, 160, 255];
+var body = document.getElementsByTagName('body')[0]
+var icon = document.getElementById('icon'); 
+
 function details() {
 	const currentWeather = document.getElementById('detail_card1').innerText;
-	var icon = document.getElementById('icon');
-
-	console.log(currentWeather)
+	document.title = `Weather for ${document.getElementById('location').innerText}`
 
 	if (currentWeather == 'Clear') {
 		icon.href = '/images/sunny.svg';
 		setColor([44, 160, 255])
 	} else if (currentWeather == 'Partly Cloudy') {
 		icon.href = '/images/partly.svg';
-		setColor([139, 176, 222])
+		// setColor([130, 140, 152])
+		setColor([223, 224, 159])
 	} else if (currentWeather == 'Overcast') {
 		icon.href = '/images/cloudy.svg';
-		setColor([105, 105, 105])
+		setColor([90, 90, 90])
 	} else if (currentWeather == 'Rainy') {
 		icon.href = '/images/rainy.svg';
 		setColor([12, 7, 90])
@@ -22,16 +24,32 @@ function details() {
 		icon.href = '/images/thunder.svg';
 		setColor([0, 0, 0])
 	}
-	document.title = `Weather for ${document.getElementById('location').innerText}`
 }
 
 function setColor(bgcolor) {
-	console.log(bgcolor)
-	if(document.body.classList == '') {
-		for(var i = 0; i < 100; i++) {
-			document.getElementsByTagName('body')[0].style.backgroundImage =
-			`cross-fade(radial-gradient(rgb(${bgcolorBase[0]},${bgcolorBase[1]},${bgcolorBase[2]})),radial-gradient(rgb(${bgcolor[0]},${bgcolor[1]},${bgcolor[2]})), ${i}%)`
-			console.log(`Cross fading: ${i}%`)
+	var step = [bgcolorBase[0], bgcolorBase[1], bgcolorBase[2]]
+	console.table('Changing background gradient')
+	if(body.classList == '') {
+		setColor_Gradient()
+		function setColor_Gradient() {
+			setTimeout(function() {
+				body.style.backgroundImage = 
+				`radial-gradient(
+					rgb(218,218,218) 20%,
+					rgb(
+						${step[0] < bgcolor[0] ? step[0]++ : step[0] > bgcolor[0] ? step[0]-- : bgcolor[0]},
+						${step[1] < bgcolor[1] ? step[1]++ : step[1] > bgcolor[1] ? step[1]-- : bgcolor[1]},
+						${step[2] < bgcolor[2] ? step[2]++ : step[2] > bgcolor[2] ? step[2]-- : bgcolor[2]}
+					)
+				)`
+				if(step[0] != bgcolor[0] || step[1] != bgcolor[1] || step[2] != bgcolor[2]) {
+					setColor_Gradient()
+				} else {
+					bgcolorBase[0] = step[0]
+					bgcolorBase[1] = step[1]
+					bgcolorBase[2] = step[2]
+				}
+			}, 10)
 		}
 	}
 }
