@@ -16,7 +16,7 @@
     <h1 id="title">Weather for <span id="location"></span></h1>
     <a id="warnings-label" href="#warnings">Weather alerts&nbsp;&nbsp;&nbsp;\/</a>
     <section style="display:none" id="warnings"></section>
-    <main>
+    <div class="card-row">
         <div id="left" class="navigator"></div>
         <div id="up" class="navigator"></div>
         <div id="card1" class="forecast-card daily"></div>
@@ -35,10 +35,14 @@
         <div id="card14" class="forecast-card daily"></div>
         <div id="right" class="navigator"></div>
         <div id="down" class="navigator"></div>
-    </main>
+    </div>
+    <div class="card-row">
+        
+    </div>
     <script src="/scripts/details.js"></script>
     <script src="/scripts/utilities.js"></script>
     <script src="/scripts/alerts.js"></script>
+    <script src="/scripts/hourly.js"></script>
     <script src="/scripts/weather.js"></script>
     <script src="/scripts/location.js"></script>
     <script async src="/scripts/warning.js"></script>

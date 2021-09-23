@@ -3,7 +3,7 @@
     background-image: none;
 }
 .embed #title {color:white}
-.embed main {
+.embed .card-row {
     margin-top:0.5rem;
     margin-bottom:0.5rem;
 }

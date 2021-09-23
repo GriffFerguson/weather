@@ -19,6 +19,7 @@ function getWeather(lat, long) {
     })
     .then(function(json) {
         data.meta = json.properties
+        getHourlyData(json.properties.forecastHourly)
         fetch(json.properties.forecast)
         .then(function(response) {
             console.log(`Fetching weather data`)
@@ -73,7 +74,7 @@ function forecast(forecastJSON) {
     ]
 
     for(var i = 0; i < data.forecast.length; i++) {
-        console.log(`Creating card ${i + 1}`)
+        // console.log(`Creating card ${i + 1}`)
         createCard(data.forecast[i])
         if(i == data.forecast.length - 1) {
             console.log('Created all forecast cards')
@@ -163,7 +164,7 @@ function createCard(forecast) {
     card.appendChild(detailImg);
     card.appendChild(temp);
     card.appendChild(twoCont);
-    console.log('Created!')
+    // console.log('Created!')
 }
 
 function summary(forecast) {
