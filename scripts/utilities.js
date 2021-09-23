@@ -63,8 +63,23 @@ function loadPage() {
             loading.style.display = 'none'
         ,1500)
         console.log("Loaded!")
-        details()
+        details(document.getElementById('detail_card1').innerText)
     } else {
         console.log('Awaiting two load confirmations')
     }
+}
+
+// Event listeners on forecast cards
+var cards = {
+    daily: document.getElementsByClassName('daily')
+}
+
+for(var i = 0; i < cards.daily.length; i++) {
+    cards.daily[i].addEventListener('click', cardClick)
+}
+
+var t;
+function cardClick(e) {
+    t = e.target;
+    details(document.getElementById(`detail_${t.id}`).innerText)
 }

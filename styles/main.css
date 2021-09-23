@@ -3,7 +3,7 @@
 body {
     margin:0;
     padding:0;
-    background-image:radial-gradient(rgb(218, 218, 218) 20%,rgb(44, 160, 255));
+    background-image:radial-gradient(rgb(218, 218, 218) 20%,rgb(218,218,218));
     background-size:100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -96,6 +96,10 @@ main {
     min-width:15rem;
     transition:transform 500ms;
     height:17rem;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .forecast-card:nth-child(odd) {background-color:rgb(69, 85, 233)}

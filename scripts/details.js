@@ -1,10 +1,9 @@
 // Called from utilities.js
-var bgcolorBase = [44, 160, 255];
+var bgcolorBase = [218, 218, 218];
 var body = document.getElementsByTagName('body')[0]
 var icon = document.getElementById('icon'); 
 
-function details() {
-	const currentWeather = document.getElementById('detail_card1').innerText;
+function details(currentWeather) {
 	document.title = `Weather for ${document.getElementById('location').innerText}`
 
 	if (currentWeather == 'Clear') {
@@ -28,7 +27,6 @@ function details() {
 
 function setColor(bgcolor) {
 	var step = [bgcolorBase[0], bgcolorBase[1], bgcolorBase[2]]
-	console.table('Changing background gradient')
 	if(body.classList == '') {
 		setColor_Gradient()
 		function setColor_Gradient() {
