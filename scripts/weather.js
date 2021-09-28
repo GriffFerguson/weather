@@ -3,6 +3,7 @@ console.log("Awaiting start in weather.js")
 var data = {
     meta: null,
     forecast: [],
+    hourlyForecast: [],
     city: null
 }
 
@@ -11,7 +12,8 @@ function getWeather(lat, long) {
     fetch(`https://api.weather.gov/points/${lat},${long}`, {
         headers: {
             'accept': 'application/geo+json'
-        }
+        },
+        cache: 'no-cache'
     })
     .then(function(response) {
         console.log(`Fetching data from: https://api.weather.gov/points/${lat},${long}`)
@@ -20,7 +22,7 @@ function getWeather(lat, long) {
     .then(function(json) {
         data.meta = json.properties
         getHourlyData(json.properties.forecastHourly)
-        fetch(json.properties.forecast)
+        fetch(json.properties.forecast, {cache: 'no-cache'})
         .then(function(response) {
             console.log(`Fetching weather data`)
             return response.json()
@@ -28,25 +30,9 @@ function getWeather(lat, long) {
         .then(function(json) {
             forecast(json)
         })
-        .catch(function(error) {
-            console.log(`Experienced error, reloading page.\r\nError message: ${error}`)
-            document.getElementById("loading_text-wrapper").innerHTML +=
-            "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>" +
-            "<p>If the problem persists, please ensure you are within the United States and have allowed access to your location!"
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000)
-        })
+        .catch(error => {fetchError(error)})
     })
-    .catch(function(error) {
-        console.log(`Experienced error, reloading page.\r\nError message: ${error}`)
-        document.getElementById("loading_text-wrapper").innerHTML +=
-        "<p>Whoops! An error was encountered!<br>We'll reload the page!</p>" +
-        "<p>If the problem persists, please ensure you are within the United States and have allowed access to your location!"
-        setTimeout(() => {
-            window.location.reload();
-        }, 3000)
-    })
+    .catch(error => {fetchError(error)})
 }
 
 // Weekly forecast
@@ -55,23 +41,7 @@ function forecast(forecastJSON) {
     data.city = `${data.meta.relativeLocation.properties.city}, ${data.meta.relativeLocation.properties.state}`
     document.getElementById('location').innerText = data.city;
 
-    var forecastData = forecastJSON.properties.periods;
-    data.forecast = [
-        forecastData[0],
-        forecastData[1],
-        forecastData[2],
-        forecastData[3],
-        forecastData[4],
-        forecastData[5],
-        forecastData[6],
-        forecastData[7],
-        forecastData[8],
-        forecastData[9],
-        forecastData[10],
-        forecastData[11],
-        forecastData[12],
-        forecastData[13]
-    ]
+    data.forecast = forecastJSON.properties.periods;
 
     for(var i = 0; i < data.forecast.length; i++) {
         // console.log(`Creating card ${i + 1}`)
@@ -82,8 +52,6 @@ function forecast(forecastJSON) {
             loadPage()
         }
     }
-
-    return data
 }
 
 function createCard(forecast) {
@@ -165,27 +133,4 @@ function createCard(forecast) {
     card.appendChild(temp);
     card.appendChild(twoCont);
     // console.log('Created!')
-}
-
-function summary(forecast) {
-    var forecastSummary;
-    if(forecast.indexOf('Sunny') != -1 || forecast.indexOf('Clear') != -1) {
-        forecastSummary = ['Clear','sunny.svg',0]
-    }
-    if(forecast.indexOf('Cloudy') != -1 ) {
-        forecastSummary = ['Overcast','cloudy.svg',2]
-    }
-    if(forecast.indexOf('Mostly') != -1 || forecast.indexOf('Partly') != -1) {
-        forecastSummary = ['Partly Cloudy','partly.svg',1]
-    }
-    if(forecast.indexOf('Showers') != -1 || forecast.indexOf('Rain') != -1) {
-        forecastSummary = ['Rainy','rainy.svg',3]
-    }
-    if(forecast.indexOf('Thunderstorms') != -1) {
-        forecastSummary = ['Thunderstorms','thunder.svg',4]
-    }
-    if(forecast.indexOf('Tropical Storm') != -1) {
-        forecastSummary = ['Tropical Storm','thunder.svg',5]
-    }
-    return forecastSummary
 }

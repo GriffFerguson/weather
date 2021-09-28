@@ -12,7 +12,7 @@ if(loc_pos.lat == null || loc_pos.long == null && loc_pos.lat == "" || loc_pos.l
     console.log("Could not get location from URL")
     navigator.geolocation.getCurrentPosition(
         redirect,
-        error,
+        locError,
         {
             timeout: 30000,
             maximumAge: 0
@@ -28,7 +28,7 @@ function redirect(loc) {
     window.location.replace(`${window.location.href.split('?')[0]}?lat=${loc.coords.latitude}&long=${loc.coords.longitude}`)
 }
 
-function error() {
+function locError() {
     console.log('Encountered error receiving location')
     alert('Whoops! We couldn\'t find your location! please!\nPlease click change the permissions for this site to let us access your current location.')
 }

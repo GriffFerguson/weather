@@ -72,9 +72,9 @@ a:hover {
 }
 
 /* Weather section */
-.card-row {
+#daily-card-row {
     width:auto;
-    max-width:81.6rem; /* Due to padding, max width is closer to 99.1rem */
+    max-width:81.6rem;
     margin-top:1.9rem;
     margin-bottom:1.9rem;
     display:flex;
@@ -85,6 +85,19 @@ a:hover {
     padding:0;
     overflow:hidden;
     padding-left:17.5rem;
+}
+#hourly-card-row {
+    width:auto;
+    max-width:98.1rem;
+    margin-top:1.9rem;
+    margin-bottom:1.9rem;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding:0;
+    overflow:hidden;
 }
 
 .forecast-card {
@@ -121,6 +134,7 @@ a:hover {
     margin:0;
     font-size:1.75rem;
 }
+#hourly-card-row .forecast-card h2 {font-size:1.5rem;}
 .forecast-card p {
     text-align:center;
     margin:0;
@@ -193,33 +207,34 @@ a:hover {
     z-index:89
     
 }
-.navigator:is(#right, #left) {
+.navigator:is(#right, #left, #secondary_right, #secondary_left) {
     width:2.8rem;
     height:100%;
     
 }
-.navigator:is(#up, #down) {
+.navigator:is(#up, #down, #secondary_up, #secondary_down) {
     width:16.2rem;
     height:3.5rem;
     display: none;
     
 }
 .navigator:hover {opacity:1}
-.navigator:active:is(#right, #left) {width:100rem;}
-.navigator:active:is(#up, #down) {height:50rem;}
-#left {
+.navigator:active:is(#right, #left, #secondary_right, #secondary_left) {width:100rem;}
+.navigator:active:is(#up, #down, #secondary_up, #secondary_down) {height:50rem;}
+#left, #secondary_left {
     left:17.5rem;
     background-image: linear-gradient(to right, rgba(200,200,200,1),rgba(200,200,200,0));
 }
-#right {
+#secondary_left {left:0;}
+#right, #secondary_right {
     right:0;
     background-image: linear-gradient(to left, rgba(200,200,200,1),rgba(200,200,200,0));
 }
-#up {
+#up, #secondary_up {
     top:18.5rem;
     background-image: linear-gradient(to bottom, rgba(200,200,200,1),rgba(200,200,200,0));
 }
-#down {
+#down, #secondary_down {
     bottom:0;
     background-image: linear-gradient(to top, rgba(200,200,200,1),rgba(200,200,200,0));
 }
@@ -307,7 +322,7 @@ a:hover {
 @media only screen and (max-width:1200px) {:root {font-size:8px;}}
 @media only screen and (max-width:800px) {:root {font-size:6px;}}
 @media only screen and (max-width:600px) {
-    .card-row {
+    #daily-card-row {
         width:auto;
         margin-top:1.9rem;
         margin-bottom:1.9rem;
