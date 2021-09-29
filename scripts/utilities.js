@@ -110,6 +110,7 @@ function loadPage() {
         ,1500)
         console.log("Loaded!")
         details(document.getElementById('detail_card1').innerText)
+        displayHourlyCards(document.getElementById('card1').getAttribute('value'))
     } else {
         console.log('Awaiting three load confirmations')
     }
