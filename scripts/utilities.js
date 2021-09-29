@@ -8,12 +8,20 @@ var navKeys = {
         right: document.getElementById('right'),
         down: document.getElementById('down'),
         up: document.getElementById('up')
+    },
+    hourly: {
+        left: document.getElementById('secondary_left'),
+        right: document.getElementById('secondary_right'),
+        up: document.getElementById('secondary_up'),
+        down: document.getElementById('secondary_down')
     }
 }
 var cards = {
-    daily: document.getElementsByClassName('daily')
+    daily: document.getElementsByClassName('daily'),
+    hourly: null //Defined in hourly.js
 }
 var translation = 0;
+var hourlyTranslation = 0;
 
 navKeys.daily.left.addEventListener('click', e => {
     if (translation < 0) {
@@ -48,6 +56,39 @@ navKeys.daily.down.addEventListener('click', e => {
     }
 })
 
+navKeys.hourly.left.addEventListener('click', e => {
+    if (hourlyTranslation < -1) {
+        hourlyTranslation = hourlyTranslation + 16.35;
+        for(var i = 0; i < cards.hourly.length; i++) {
+            cards.hourly[i].style.transform = `translateX(${hourlyTranslation}rem)`
+        }
+    }
+})
+navKeys.hourly.right.addEventListener('click', e => {
+    if (hourlyTranslation > (activeHourlyCards.length * -16.35) + 114.45) {
+        hourlyTranslation = hourlyTranslation - 16.35;
+        for(var i = 0; i < cards.hourly.length; i++) {
+            cards.hourly[i].style.transform = `translateX(${hourlyTranslation}rem)`
+        }
+    }
+})
+navKeys.hourly.up.addEventListener('click', e => {
+    if (hourlyTranslation < -1) {
+        hourlyTranslation = hourlyTranslation + 18.35;
+        for(var i = 0; i < cards.hourly.length; i++) {
+            cards.hourly[i].style.transform = `translateY(${hourlyTranslation}rem)`
+        }
+    }
+})
+navKeys.hourly.down.addEventListener('click', e => {
+    if (hourlyTranslation > (activeHourlyCards.length * -18.35) + 128.45) {
+        hourlyTranslation = hourlyTranslation - 18.35;
+        for(var i = 0; i < cards.hourly.length; i++) {
+            cards.hourly[i].style.transform = `translateY(${hourlyTranslation}rem)`
+        }
+    }
+})
+
 // Loading screen
 setTimeout(() => {
     if(document.getElementById('loading').style.opacity != '0') {
@@ -70,20 +111,22 @@ function loadPage() {
         console.log("Loaded!")
         details(document.getElementById('detail_card1').innerText)
     } else {
-        console.log('Awaiting two load confirmations')
+        console.log('Awaiting three load confirmations')
     }
 }
 
 // Event listeners on forecast cards
 for(var i = 0; i < cards.daily.length; i++) {
-    cards.daily[i].addEventListener('click', cardClick)
+    cards.daily[i].addEventListener('click', cardDailyClick)
 }
 
-var t;
-function cardClick(e) {
-    t = e.target;
+function cardDailyClick(e) {
+    var t = e.target;
     details(document.getElementById(`detail_${t.id}`).innerText)
+    displayHourlyCards(t.getAttribute('value'))
 }
+
+
 
 // Fetch error
 function fetchError(error) {
@@ -151,7 +194,7 @@ function getTime(time) {
         time.hour = time.hour - 12;
         time.suffix = 'p.m'
     }
-    string.time = `${time.hour}:${time.minute} ${time.suffix}`
+    string.time = `${time.hour}:${time.minute}${time.suffix}`
     
     return string
 }

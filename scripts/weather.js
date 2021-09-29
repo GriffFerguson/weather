@@ -56,10 +56,13 @@ function forecast(forecastJSON) {
 
 function createCard(forecast) {
     var cardID = 'card' + forecast.number;
+    const card = document.getElementById(cardID);
+
 
     // Forecast time
     var name = document.createElement('h2')
     name.innerText = forecast.name;
+    card.setAttribute('value', getTime(forecast.startTime).shortDate)
 
     //Details
     forecastSummary = summary(forecast.shortForecast)
@@ -76,7 +79,7 @@ function createCard(forecast) {
     var temp = document.createElement('p')
     temp.classList.add('temperature')
 
-    if (forecast.temperature >= '70') {
+    if (forecast.temperature >= 70) {
         temp.classList.add('hot-temp')
     } else if (forecast.temperature < 70) {
         temp.classList.add('cold-temp')
@@ -126,7 +129,6 @@ function createCard(forecast) {
         twoCont.appendChild(warning)
     }
 
-    const card = document.getElementById(cardID);
     card.appendChild(name);
     card.appendChild(detail);
     card.appendChild(detailImg);
