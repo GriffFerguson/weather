@@ -122,9 +122,13 @@ for(var i = 0; i < cards.daily.length; i++) {
 }
 
 function cardDailyClick(e) {
-    var t = e.target;
-    details(document.getElementById(`detail_${t.id}`).innerText)
+    var t = document.getElementById(e.target.id.split('_')[1] != undefined ? e.target.id.split('_')[1] : e.target.id);
+    console.log(e.target.id.split('_')[1], t)
+    details(document.getElementById(`detail_${t.getAttribute('id')}`).innerText)
     displayHourlyCards(t.getAttribute('value'))
+    document.getElementsByClassName('card-selected')[0].classList.remove('card-selected')
+    console.log(t.id)
+    document.getElementById(t.getAttribute('id')).classList.add('card-selected')
 }
 
 
@@ -191,8 +195,8 @@ function getTime(time) {
         minute: timeDate[1].split(':')[1],
         suffix: 'a.m'
     }
-    if (time.hour > 12) {
-        time.hour = time.hour - 12;
+    if (time.hour >= 12) {
+        time.hour = time.hour != 12 ? time.hour - 12 : time.hour;
         time.suffix = 'p.m'
     }
     string.time = `${time.hour}:${time.minute}${time.suffix}`

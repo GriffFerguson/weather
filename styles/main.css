@@ -107,7 +107,7 @@ a:hover {
     margin:0;
     width:15rem;
     min-width:15rem;
-    transition:transform 500ms;
+    transition:transform 500ms, border-bottom-width 800ms, padding-bottom 800ms;
     height:17rem;
     -ms-user-select: none;
     -moz-user-select: none;
@@ -125,6 +125,10 @@ a:hover {
     margin-left:-17.5rem;
     z-index:89;
     width:16rem;
+}
+.forecast-card:is(.card-selected) {
+    border-bottom:0.6rem solid white;
+    padding-bottom:0;
 }
 
 /* Forecast card elements */
@@ -167,6 +171,14 @@ a:hover {
     background-position: center center;
     background-repeat: no-repeat;
     margin-bottom:0.8rem;
+}
+.date {
+    font-weight:0;
+    font-size:1rem;
+    font-family:'LatoBlack';
+    margin-top:0.2rem;
+    margin-bottom:0.5rem;
+    text-align: center;
 }
 
 .windDir-N {transform: rotate(0deg);}
