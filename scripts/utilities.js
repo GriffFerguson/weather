@@ -197,6 +197,7 @@ function getTime(time) {
         time.hour = time.hour != 12 ? time.hour - 12 : time.hour;
         time.suffix = 'p.m'
     }
+    time.hour = timeDate[1].split(':')[0] != 0 ? timeDate[1].split(':')[0] : 12
     string.time = `${time.hour}:${time.minute}${time.suffix}`
     
     return string

@@ -12,7 +12,8 @@ function details(currentWeather) {
 	} else if (currentWeather == 'Partly Cloudy') {
 		icon.href = '/images/partly.svg';
 		// setColor([130, 140, 152])
-		setColor([223, 224, 159])
+		// setColor([223, 224, 159])
+		setColor([134, 152, 203])
 	} else if (currentWeather == 'Overcast') {
 		icon.href = '/images/cloudy.svg';
 		setColor([90, 90, 90])

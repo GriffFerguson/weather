@@ -11,9 +11,9 @@ function getWeather(lat, long) {
     console.log('Beginning to gather weather data')
     fetch(`https://api.weather.gov/points/${lat},${long}`, {
         headers: {
-            'accept': 'application/geo+json'
+            'accept': 'application/geo+json',
         },
-        cache: 'no-cache'
+        cache: 'no-store'
     })
     .then(function(response) {
         return response.json()
@@ -22,7 +22,7 @@ function getWeather(lat, long) {
         console.log(`Fetching data from: ${json.properties.forecast}`)
         data.meta = json.properties
         getHourlyData(json.properties.forecastHourly)
-        fetch(json.properties.forecast, {cache: 'no-cache'})
+        fetch(json.properties.forecast, {cache: 'no-store'})
         .then(function(response) {
             console.log(`Fetching weather data`)
             return response.json()
@@ -58,7 +58,6 @@ function createCard(forecast) {
     var cardID = 'card' + forecast.number;
     const card = document.getElementById(cardID);
 
-
     // Forecast time
     card.setAttribute('value', getTime(forecast.startTime).shortDate)
     var name = document.createElement('h2')
@@ -77,10 +76,10 @@ function createCard(forecast) {
     var detailImg = document.createElement('div')
     detailImg.classList.add('summary')
     detailImg.setAttribute('style', `background-image: url('/images/${forecastSummary[1]}')`)
-    detailImg.ariaLabel = forecastSummary[0]
+    detailImg.setAttribute('aria-label', `${forecastSummary[0]} image`)
+    detailImg.setAttribute('role', `img`)
     detailImg.setAttribute('id', `img_${cardID}`)
     
-
     // Temperature
     var temp = document.createElement('p')
     temp.classList.add('temperature')

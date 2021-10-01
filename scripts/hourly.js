@@ -1,6 +1,6 @@
 console.log('Awaiting start in hourly.js')
 function getHourlyData(url) {
-    fetch(url, {cache: 'no-cache'})
+    fetch(url, {cache: 'no-store'})
     .then(response => {
         console.log(`Fetching hourly data from ${url}`);
         return response.json();
@@ -45,6 +45,8 @@ function createHourlyCard(forecast) {
     var detailImg = document.createElement('div')
     detailImg.classList.add('summary')
     detailImg.setAttribute('style', `background-image: url('/images/${forecastSummary[1]}')`)
+    detailImg.setAttribute('aria-label', `${forecastSummary[0]} image`)
+    detailImg.setAttribute('role', `img`)
     
     // Temperature
     var temp = document.createElement('p')
