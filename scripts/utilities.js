@@ -139,7 +139,7 @@ function fetchError(error) {
     "<p>If the problem persists, please ensure you are within the United States and have allowed access to your location!"
     setTimeout(() => {
         window.location.reload();
-    }, 2000)
+    }, 10000)
 }
 
 // Parse time
@@ -197,7 +197,7 @@ function getTime(time) {
         time.hour = time.hour != 12 ? time.hour - 12 : time.hour;
         time.suffix = 'p.m'
     }
-    time.hour = timeDate[1].split(':')[0] != 0 ? timeDate[1].split(':')[0] : 12
+    time.hour = timeDate[1].split(':')[0] != 0 && time.suffix == 'a.m' ? time.hour : time.suffix == 'p.m' ? time.hour : 12
     string.time = `${time.hour}:${time.minute}${time.suffix}`
     
     return string

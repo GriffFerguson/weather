@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="/styles/main.css" rel="stylesheet">
+    <link href="/styles/embed.css" rel="stylesheet">
+    <link href="/images/sunny.svg" rel="icon" id="icon" sizes="128x128">
+</head>
+<body class="embed">
+    <div id="loading">
+        <div id="loading_text-wrapper">
+            <h1>Loading...</h1>
+        </div>
+    </div>
+    <h1 id="title">Weather for <span id="location"></span></h1>
+    <a id="warnings-label" href="#warnings">Weather alerts&nbsp;&nbsp;&nbsp;\/</a>
+    <section style="display:none" id="warnings"></section>
+    <div id="daily-card-row">
+        <div id="left" class="navigator"></div>
+        <div id="up" class="navigator"></div>
+        <div id="card1" class="forecast-card daily card-selected"></div>
+        <div id="card2" class="forecast-card daily"></div>
+        <div id="card3" class="forecast-card daily"></div>
+        <div id="card4" class="forecast-card daily"></div>
+        <div id="card5" class="forecast-card daily"></div>
+        <div id="card6" class="forecast-card daily"></div>
+        <div id="card7" class="forecast-card daily"></div>
+        <div id="card8" class="forecast-card daily"></div>
+        <div id="card9" class="forecast-card daily"></div>
+        <div id="card10" class="forecast-card daily"></div>
+        <div id="card11" class="forecast-card daily"></div>
+        <div id="card12" class="forecast-card daily"></div>
+        <div id="card13" class="forecast-card daily"></div>
+        <div id="card14" class="forecast-card daily"></div>
+        <div id="right" class="navigator"></div>
+        <div id="down" class="navigator"></div>
+    </div>
+    <div id="hourly-card-row">
+        <div id="secondary_left" class="navigator"></div>
+        <div id="secondary_up" class="navigator"></div>
+        <div id="secondary_right" class="navigator"></div>
+        <div id="secondary_down" class="navigator"></div>
+    </div>
+    <script src="/scripts/details.js"></script>
+    <script src="/scripts/utilities.js"></script>
+    <script src="/scripts/alerts.js"></script>
+    <script src="/scripts/hourly.js"></script>
+    <script src="/scripts/weather.js"></script>
+    <script src="/scripts/location.js"></script>
+    <script async src="/scripts/warning.js"></script>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.get('display') == 'daily') {
+            console.log('Displaying only daily forecast')
+            document.getElementById('hourly-card-row').style.display = 'none'
+        } else if (urlParams.get('display') == 'hourly') {
+            document.getElementById('daily-card-row').style.display = 'none'
+        }
+    </script>
+</body>
+</html>
