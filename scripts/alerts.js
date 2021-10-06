@@ -13,11 +13,11 @@ function displayAlerts(e) {
     if(warningsObj.sec.style.display == 'none') {
         warningsObj.sec.style.display = 'block'
         warningsObj.label.href = '#warnings'
-        warningsObj.label.innerHTML = 'Weather alerts&nbsp;&nbsp;&nbsp;/\\'
+        warningsObj.label.innerHTML = 'Weather alerts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\\'
     } else {
         warningsObj.sec.style.display = 'none'
         warningsObj.label.href = '#'
-        warningsObj.label.innerHTML = 'Weather alerts&nbsp;&nbsp;&nbsp;\\\/'
+        warningsObj.label.innerHTML = 'Weather alerts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\/'
     }
 }
 
@@ -62,8 +62,12 @@ function formatAlerts(data) {
             var desc = document.createElement('p')
             desc.innerText = data[i].properties.description
             var instruction = document.createElement('p')
-            instruction.innerText = `Instructions: ${data[i].properties.instruction}`
-    
+            if(data[i].properties.instruction != null) {
+                instruction.innerText = `Instructions: ${data[i].properties.instruction}`
+            } else {
+                instruction.innerText = `Instructions: N/A`
+            }
+
             cont.appendChild(title)
             cont.appendChild(area)
             cont.appendChild(headline)
