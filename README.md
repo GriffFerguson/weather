@@ -1,6 +1,6 @@
-# Weather App
+# Blue or Gray Skies
 
-This weather app obtains information using the [NOAA Weather API](https://www.weather.gov/documentation/services-web-api#/). Data is requested and processed on the client side.
+This weather site obtains information using the [NWS Weather API](https://www.weather.gov/documentation/services-web-api#/). Data is requested and processed on the client side.
 <hr>
 
 ## Location Usage
